@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 100%;
+  font-weight: normal;
+}
+@mixin reference($decoration,$size,$weight,$color) {
+  text-decoration: $decoration;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+@mixin justify-content($pos1) {
+  -webkit-justify-content: $pos1;
+  -ms-flex-pack: $pos1;
+  justify-content: $pos1;
+}
+@mixin align-items($pos3) {
+  -webkit-align-items: $pos3;
+  -ms-flex-align: $pos3;
+  align-items: $pos3;
+}
+@mixin block($width,$height,$borderWidth,$borderStyle,$borderColor,$borderRadius) {
+  width: $width;
+  height: $height;
+  border-width: $borderWidth;
+  border-style: $borderStyle;
+  border-color: $borderColor;
+  border-radius: $borderRadius;
+}
+header {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(row);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(100%, 10vh, 0px, solid, green, 0);
+  background-color: orange;
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: green;
+  }
+}
+.main {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(80%, auto, 1px, solid, green, 0);
+}
+.task {
+    @include block(80%, auto, 0px, solid, green, 0);
+    p {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: green;
+      padding: 2%;    
+    }
+}
