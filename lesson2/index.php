@@ -110,7 +110,7 @@ echo "Результат= $c";
             break;
 
           default:
-            echo "Вы выбрали месяц Январь";
+            echo "Такого месяца не существует";
             break;
         }
          ?>
@@ -139,8 +139,8 @@ echo "Результат= $c";
               break;
 
             default:
-              $tarif = 4.15;
-              $cityName = 'Москву';
+              $tarif = 'неопределенное количество';
+              $cityName = 'Неизвестнай город';
               break;
           }
           $price = $tarif * $min;
@@ -169,8 +169,9 @@ echo "Результат= $c";
         <p>Задание № 6*</p>
         <?php
             function timeShow(){
-            $hourNow = (int)date('H') + 1;
-            $minutsNow = (int)date('i');
+            date_default_timezone_set('Europe/Moscow');
+            $hourNow = date('H');
+            $minutsNow = date('i');
             if ($hourNow == 1 || $hourNow == 21) {
               $hourText = 'час';
             } else if ($hourNow >= 2 && $hourNow <= 4 || $hourNow >= 22 && $hourNow <= 24) {
