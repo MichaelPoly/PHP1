@@ -40,6 +40,7 @@ echo "Результат= $c";
       <div class="task">
         <p>Задание № 2</p>
         <?php
+        date_default_timezone_set('Europe/Moscow');        
         $hourNow = date('H');
         $minutsNow = date('i');
         echo "Сейчас $hourNow : $minutsNow<br>";
