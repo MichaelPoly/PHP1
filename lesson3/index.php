@@ -142,13 +142,7 @@ $text = 'Но чтобы вы поняли, откуда возникает эт
                           echo "<br>";
                         }
                     }
-                    // print_r($str1[$i]);
-                    // echo "<br>";
                   }
-                  // for ($i=0; $i < count($str1); $i++) {
-                  //   if (preg_match("/^К/", $str1[$i]) == 1) echo "$str1[$i]<br>";
-                  // }
-                  // print_r($str2);
          ?>
       </div>
       <div class="task">
