@@ -49,11 +49,26 @@ add_item($link, "TN008", "Товар8", "7", "1290");
 add_item($link, "TN009", "Товар9", "9", "1990");
 add_item($link, "TN009", "Товар10", "9", "590");
 
-$query = "SELECT * FROM clients";
-$result = mysqli_query($link, $query);
-if (!$result) die(mysqli_error($link));
-$clients = mysqli_fetch_assoc($result);
-foreach ($clients as $key => $value) {
+$clients_show = show_table($link, "clients");
+foreach ($clients_show as $key => $value) {
+  foreach ($value as $key => $value) {
     echo "$value<br>";
+  }
 }
+echo "<br>";
+$items_show = show_table($link, "item");
+foreach ($items_show as $key => $value) {
+  foreach ($value as $key => $value) {
+    echo "$value<br>";
+  }
+}
+echo "<br>";
+$items_show = show_table_where($link, "item", "5");
+foreach ($items_show as $key => $value) {
+  foreach ($value as $key => $value) {
+    echo "$value<br>";
+  }
+}
+
+
  ?>

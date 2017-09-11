@@ -29,6 +29,7 @@ function tableCreate($link, $tableName)
   $query = "CREATE TABLE $tableName";
   $result = mysqli_query($link, $query);
   if ($result) echo "Таблица успешно создана";
+  echo "<br>";
 }
 function add_client($link, $first_name, $second_name, $last_name, $birth_date, $email, $login, $password)
 {
@@ -47,5 +48,32 @@ function add_item($link, $articul, $item_name, $quantity_stock, $price)
   $result = mysqli_query($link, $query);
   if (!$result) die(mysqli_error($link));
   return true;
+}
+function show_table($link, $table)
+{
+  $query = "SELECT * FROM $table";
+  $result = mysqli_query($link, $query);
+  if (!$result) die(mysqli_error($link));
+  $table_items = array();
+  $n = mysqli_num_rows($result);
+  for ($i=0; $i < $n; $i++) {
+    $row = mysqli_fetch_assoc($result);
+    $table_items[] = $row;
+  }
+    return $table_items;
+}
+function show_table_where($link, $table, $quantity_stock)
+{
+  $quantity_stock = (int)$quantity_stock;
+  $query = "SELECT * FROM $table WHERE quantity_stock < $quantity_stock";
+  $result = mysqli_query($link, $query);
+  if (!$result) die(mysqli_error($link));
+  $table_items = array();
+  $n = mysqli_num_rows($result);
+  for ($i=0; $i < $n; $i++) {
+    $row = mysqli_fetch_assoc($result);
+    $table_items[] = $row;
+  }
+    return $table_items;
 }
  ?>
