@@ -1,0 +1,251 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 100%;
+  font-weight: normal;
+}
+@mixin reference($decoration,$size,$weight,$color) {
+  text-decoration: $decoration;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+@mixin justify-content($pos1) {
+  -webkit-justify-content: $pos1;
+  -ms-flex-pack: $pos1;
+  justify-content: $pos1;
+}
+@mixin align-items($pos3) {
+  -webkit-align-items: $pos3;
+  -ms-flex-align: $pos3;
+  align-items: $pos3;
+}
+@mixin block($width,$height,$borderWidth,$borderStyle,$borderColor,$borderRadius) {
+  width: $width;
+  height: $height;
+  border-width: $borderWidth;
+  border-style: $borderStyle;
+  border-color: $borderColor;
+  border-radius: $borderRadius;
+}
+header {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(row);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(100%, 10vh, 0px, solid, green, 0);
+  background-color: orange;
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: green;
+  }
+}
+body {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+}
+.main {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(80%, auto, 0px, solid, green, 0);
+  .nav {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include justify-content(center);
+    @include align-items(center);
+    @include block(100%, 5vh, 0px, solid, green, 0);
+    .buttonAct {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include justify-content(center);
+      @include align-items(center);
+      @include block(24%, 99%, 0px, solid, green, 0);
+      background-color: green;
+      p {
+        color: lightgreen;
+        font-size: 1.2em;
+      }
+    }
+    .button {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include justify-content(center);
+      @include align-items(center);
+      @include block(24%, 99%, 0px, solid, green, 0);
+      background-color: lightgreen;
+      p {
+        color: green;
+        font-size: 1.2em;
+      }
+    }
+    .button:hover {
+      background-color: green;
+    }
+    .button:hover > p {
+      color: lightgreen;
+    }
+  }
+}
+.task {
+    @include block(80%, auto, 0px, solid, green, 0);
+    p {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: green;
+      padding: 2%;
+    }
+}
+.center {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(80%, 70vh, 0px, solid, green, 0);
+}
+.calc {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(45%, 50%, 0px, solid, green, 10px);
+  background-color: lightgreen;
+  .inputBlock {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include justify-content(center);
+    @include align-items(center);
+    @include block(90%, 30%, 1px, solid, green, 10px);
+    background-color: lightgray;
+    .inputNum {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(column);
+      @include justify-content(center);
+      @include align-items(center);
+      @include block(60%, 20%, 0px, solid, green, 0);
+      label {
+        color: green;
+        input {
+          width: 95%;
+          height: 20%;
+          background-color: white;
+        }
+      }
+    }
+    .result {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(column);
+      @include justify-content(center);
+      @include align-items(center);
+      @include block(35%, 80%, 0px, solid, green, 0);
+      label {
+        color: green;
+        input {
+          width: 95%;
+          height: 80%;
+          background-color: white;
+        }
+      }
+    }
+  }
+  .operators {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include justify-content(space-around);
+    @include align-items(center);
+    @include block(90%, 30%, 0px, solid, green, 0);
+    .operBtn {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include justify-content(center);
+      @include align-items(center);
+      @include block(10%, 35%, 0px, solid, green, 5px);
+      background-color: green;
+      box-shadow: 1px 1px 3px black;
+      p {
+        color: lightgreen;
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+        line-height: 2em;
+      }
+    }
+  }
+}
+.itemsBlock {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-wrap(wrap);
+  @include justify-content(space-around);
+  @include align-items(center);
+  @include block(100%, auto, 1px, solid, green, 0);
+  .item {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(column);
+    @include justify-content(space-around);
+    @include align-items(center);
+    @include block(20%, 20vh, 1px, solid, lightgreen, 5px);
+    box-shadow: 2px 2px 4px green;
+    margin-top: 2%;
+    h2 {
+      color: green;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    h3 {
+      color: orange;
+      font-size: 1.2em;
+    }
+  }
+  .item:hover {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-wrap(column);
+    @include justify-content(space-around);
+    @include align-items(center);
+    @include block(23%, 23vh, 1px, solid, lightgreen, 5px);
+    box-shadow: 2px 2px 4px green;
+  }
+}

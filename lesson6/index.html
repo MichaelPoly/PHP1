@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.2.1.js"></script>
+    <script src="main.js" charset="utf-8"></script>
+    <title>ДЗ по уроку 6</title>
+  </head>
+  <body>
+    <header>
+      <h1>ДЗ по уроку 6</h1>
+    </header>
+    <div class="main">
+      <div class="nav">
+        <div class="buttonAct" id="calculator">
+          <p>Калькулятор</p>
+        </div>
+        <div class="button" id="catalog">
+          <p>Каталог товаров</p>
+        </div>
+        <div class="button" id="galery">
+          <p>Фото галерея</p>
+        </div>
+        <div class="button" id="feedBack">
+          <p>Отзывы</p>
+        </div>
+      </div>
+      <section class="center">
+        <div class="calc">
+          <div class="inputBlock">
+            <div class="inputNum">
+              <label>Введите первое число
+                <input type="number" id="first_num" name="first_num" value="" autofocus required>
+              </label>
+              <label>Введите второе число
+                <input type="number" id="second_num" name="second_num" value="" required>
+              </label>
+            </div>
+            <div class="result">
+              <label>Результат
+                <input type="number" id="result" name="result" value="" disabled>
+              </label>
+            </div>
+          </div>
+          <div class="operators">
+            <div class="operBtn" id="sum">
+              <p>+</p>
+            </div>
+            <div class="operBtn" id="sub">
+              <p>-</p>
+            </div>
+            <div class="operBtn" id="mul">
+              <p>*</p>
+            </div>
+            <div class="operBtn" id="dev">
+              <p>/</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
