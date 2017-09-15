@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.7.0
+- https://www.phpmyadmin.net
+-
+- Хост: 127.0.0.1
+- Время создания: Сен 15 2017 г., 17:24
+- Версия сервера: 10.1.25-MariaDB
+- Версия PHP: 7.1.7
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="inet_shop" collation="utf8_general_ci" charset="utf8">
+            <pma:table name="clients">
+                CREATE TABLE `clients` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `first_name` varchar(30) NOT NULL,
+                  `second_name` varchar(30) NOT NULL,
+                  `last_name` varchar(30) NOT NULL,
+                  `birth_date` date DEFAULT NULL,
+                  `email` varchar(30) NOT NULL,
+                  `login` varchar(30) NOT NULL,
+                  `password` varchar(30) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="item">
+                CREATE TABLE `item` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `articul` varchar(30) NOT NULL,
+                  `item_name` varchar(30) NOT NULL,
+                  `quantity_stock` int(11) NOT NULL,
+                  `price` int(11) NOT NULL,
+                  `main_photo` varchar(225) NOT NULL,
+                  `describtion` varchar(1024) NOT NULL,
+                  `img_folder` varchar(225) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="purchase">
+                CREATE TABLE `purchase` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `id_client` int(11) NOT NULL,
+                  `id_item` int(11) NOT NULL,
+                  `quantity_item` int(11) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - База данных: 'inet_shop'
+    -->
+    <database name="inet_shop">
+        <!-- Таблица clients -->
+        <table name="clients">
+            <column name="id">1</column>
+            <column name="first_name">Иван</column>
+            <column name="second_name">Иванович</column>
+            <column name="last_name">Иванов</column>
+            <column name="birth_date">1985-05-12</column>
+            <column name="email">ivan@mail.ru</column>
+            <column name="login">ivan@mail.ru</column>
+            <column name="password">123qwer</column>
+        </table>
+        <table name="clients">
+            <column name="id">2</column>
+            <column name="first_name">Светлана</column>
+            <column name="second_name">Петровна</column>
+            <column name="last_name">Захарова</column>
+            <column name="birth_date">1995-07-01</column>
+            <column name="email">sveta95@rambler.ru</column>
+            <column name="login">Sveta95</column>
+            <column name="password">Qwerty123</column>
+        </table>
+        <table name="clients">
+            <column name="id">3</column>
+            <column name="first_name">Петр</column>
+            <column name="second_name">Степанович</column>
+            <column name="last_name">Васильев</column>
+            <column name="birth_date">1979-08-11</column>
+            <column name="email">vasilevp@rambler.ru</column>
+            <column name="login">vasilevp@rambler.ru</column>
+            <column name="password">VasPetr.1108</column>
+        </table>
+        <table name="clients">
+            <column name="id">4</column>
+            <column name="first_name">Ирина</column>
+            <column name="second_name">Васильевна</column>
+            <column name="last_name">Петрова</column>
+            <column name="birth_date">1999-06-21</column>
+            <column name="email">ira_petrova99@yandex.ru</column>
+            <column name="login">ira_petrova99@yandex.ru</column>
+            <column name="password">Ira99</column>
+        </table>
+        <table name="clients">
+            <column name="id">5</column>
+            <column name="first_name">Лариса</column>
+            <column name="second_name">Сергеевна</column>
+            <column name="last_name">Савелова</column>
+            <column name="birth_date">1997-06-15</column>
+            <column name="email">savelova_lar@gmail.com</column>
+            <column name="login">savelova_lar@gmail.com</column>
+            <column name="password">jfid18mn</column>
+        </table>
+        <table name="clients">
+            <column name="id">6</column>
+            <column name="first_name">Сергей</column>
+            <column name="second_name">Александрович</column>
+            <column name="last_name">Наумов</column>
+            <column name="birth_date">1993-10-15</column>
+            <column name="email">naum_s_a@gmail.com</column>
+            <column name="login">naum_s_a@gmail.com</column>
+            <column name="password">naumov!s!a</column>
+        </table>
+        <table name="clients">
+            <column name="id">7</column>
+            <column name="first_name">Сергей</column>
+            <column name="second_name">Андреевич</column>
+            <column name="last_name">Александров</column>
+            <column name="birth_date">0000-00-00</column>
+            <column name="email">aleksandrov_s@mail.ru</column>
+            <column name="login">aleksandrov_s@mail.ru</column>
+            <column name="password">porsh911</column>
+        </table>
+        <table name="clients">
+            <column name="id">8</column>
+            <column name="first_name">Анатолий</column>
+            <column name="second_name">Андреевич</column>
+            <column name="last_name">Степанов</column>
+            <column name="birth_date">0000-00-00</column>
+            <column name="email">stepanov77@mail.ru</column>
+            <column name="login">Stepan77</column>
+            <column name="password">mosk77Anatolij</column>
+        </table>
+        <table name="clients">
+            <column name="id">9</column>
+            <column name="first_name">Анна</column>
+            <column name="second_name">Сергеевна</column>
+            <column name="last_name">Сташкова</column>
+            <column name="birth_date">2001-02-03</column>
+            <column name="email">stashkovaas@yandex.ru</column>
+            <column name="login">stashkovaas@yandex.ru</column>
+            <column name="password">2001Saratov</column>
+        </table>
+        <table name="clients">
+            <column name="id">10</column>
+            <column name="first_name">Галина</column>
+            <column name="second_name">Олеговна</column>
+            <column name="last_name">Камаева</column>
+            <column name="birth_date">1998-11-12</column>
+            <column name="email">gala_kamaj@yandex.ru</column>
+            <column name="login">GalinaKamaeva</column>
+            <column name="password">KamaevaG1112</column>
+        </table>
+        <!-- Таблица item -->
+        <table name="item">
+            <column name="id">1</column>
+            <column name="articul">TN001</column>
+            <column name="item_name">Товар1</column>
+            <column name="quantity_stock">50</column>
+            <column name="price">2990</column>
+            <column name="main_photo">elefant1.png</column>
+            <column name="describtion">Описание товара номер 1
+характеристики товара номер 1</column>
+            <column name="img_folder">img/TN001/</column>
+        </table>
+        <table name="item">
+            <column name="id">2</column>
+            <column name="articul">TN002</column>
+            <column name="item_name">Товар2</column>
+            <column name="quantity_stock">35</column>
+            <column name="price">3290</column>
+            <column name="main_photo">elefant1.png</column>
+            <column name="describtion">Описание товара номер 2
+характеристики товара номер 2</column>
+            <column name="img_folder">img/TN002/</column>
+        </table>
+        <table name="item">
+            <column name="id">3</column>
+            <column name="articul">TN003</column>
+            <column name="item_name">Товар3</column>
+            <column name="quantity_stock">20</column>
+            <column name="price">3190</column>
+            <column name="main_photo">elefant1.png</column>
+            <column name="describtion">Описание товара номер 3
+характеристики товара номер 3</column>
+            <column name="img_folder">img/TN003/</column>
+        </table>
+        <table name="item">
+            <column name="id">4</column>
+            <column name="articul">TN004</column>
+            <column name="item_name">Товар4</column>
+            <column name="quantity_stock">60</column>
+            <column name="price">4090</column>
+            <column name="main_photo">elefant1.png</column>
+            <column name="describtion">Описание товара номер 4
+характеристики товара номер 4</column>
+            <column name="img_folder">img/TN004/</column>
+        </table>
+        <table name="item">
+            <column name="id">5</column>
+            <column name="articul">TN005</column>
+            <column name="item_name">Товар5</column>
+            <column name="quantity_stock">90</column>
+            <column name="price">3490</column>
+            <column name="main_photo">elefant1.png</column>
+            <column name="describtion">Описание товара номер 5
+характеристики товара номер 5</column>
+            <column name="img_folder">img/TN005/</column>
+        </table>
+        <table name="item">
+            <column name="id">6</column>
+            <column name="articul">TN006</column>
+            <column name="item_name">Товар6</column>
+            <column name="quantity_stock">2</column>
+            <column name="price">5690</column>
+            <column name="main_photo">elefant1.png</column>
+            <column name="describtion">Описание товара номер 6
+характеристики товара номер 6</column>
+            <column name="img_folder">img/TN006/</column>
+        </table>
+        <table name="item">
+            <column name="id">7</column>
+            <column name="articul">TN007</column>
+            <column name="item_name">Товар7</column>
+            <column name="quantity_stock">5</column>
+            <column name="price">990</column>
+            <column name="main_photo">elefant1.png</column>
+            <column name="describtion">Описание товара номер 7
+характеристики товара номер 7</column>
+            <column name="img_folder">img/TN007/</column>
+        </table>
+        <table name="item">
+            <column name="id">8</column>
+            <column name="articul">TN008</column>
+            <column name="item_name">Товар8</column>
+            <column name="quantity_stock">7</column>
+            <column name="price">1290</column>
+            <column name="main_photo">elefant1.png</column>
+            <column name="describtion">Описание товара номер 8
+характеристики товара номер 8</column>
+            <column name="img_folder">img/TN008/</column>
+        </table>
+        <table name="item">
+            <column name="id">9</column>
+            <column name="articul">TN009</column>
+            <column name="item_name">Товар9</column>
+            <column name="quantity_stock">9</column>
+            <column name="price">1990</column>
+            <column name="main_photo">elefant1.png</column>
+            <column name="describtion">Описание товара номер 9
+характеристики товара номер 9</column>
+            <column name="img_folder">img/TN009/</column>
+        </table>
+        <table name="item">
+            <column name="id">10</column>
+            <column name="articul">TN009</column>
+            <column name="item_name">Товар10</column>
+            <column name="quantity_stock">9</column>
+            <column name="price">590</column>
+            <column name="main_photo">elefant1.png</column>
+            <column name="describtion">Описание товара номер 10
+характеристики товара номер 10</column>
+            <column name="img_folder">img/TN010/</column>
+        </table>
+        <!-- Таблица purchase -->
+    </database>
+</pma_xml_export>
