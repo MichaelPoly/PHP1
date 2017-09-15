@@ -219,6 +219,7 @@ body {
         box-shadow: 2px 2px 4px black;
         p {
           color: green;
+          font-weight: bold;
         }
       }
       .btnItem:hover {
@@ -345,10 +346,73 @@ body {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    @include flex-wrap(column);
+    @include flex-direction(column);
     @include justify-content(space-around);
     @include align-items(center);
     @include block(23%, 23vh, 1px, solid, lightgreen, 5px);
     box-shadow: 2px 2px 4px green;
+  }
+}
+.addImage {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(90%, 5vh, 0px, solid, lightgreen, 5px);
+  background-color: lightgreen;
+  margin: 1%;
+  p {
+    color: green;
+    font-weight: bold;
+  }
+}
+.images1 {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-wrap(wrap);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(90%, 80vh, 1px, solid, lightgreen, 5px);
+  .imgGalMin {
+    max-width: 15%;
+    margin: 1%;
+
+  }
+}
+.addForm{
+  position: absolute;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(60%, 30vh, 1px, solid, green, 10px);
+  box-shadow: 2px 2px 4px black;
+  background-color: white;
+  h2 {
+    color: green;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 1%;
+  }
+  .addImgForm {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    color: green;
+    font-size: 1em;
+    font-weight: bold;
+    input {
+      color: green;
+      font-size: 1em;
+      font-weight: bold;
+      margin: 5%;
+    }
   }
 }
