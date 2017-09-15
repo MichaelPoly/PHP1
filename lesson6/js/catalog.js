@@ -13,7 +13,7 @@ var $items;
       $items = data;
       for (var i = 0; i < data.length; i++) {
         $('.itemsBlock').append('<div class="item" id="itemId' + i +'"></div>');
-        $('#itemId' + i).append('<img src="' + data[i].main_photo + '" alt="">');
+        $('#itemId' + i).append('<img src="' + data[i].img_folder + data[i].main_photo + '" alt="">');
         $('#itemId' + i).append('<h2>' + data[i].item_name + '</h2>');
         $('#itemId' + i).append('<h3>Цена: ' + data[i].price + '</h3>');
       }
@@ -26,7 +26,7 @@ var $items;
         $('.infoBox').append('<div class="imgBox"></div>');
         $('.imgBox').append('<div class="images"></div>');
         $('.imgBox').append('<div class="imgShow"></div>');
-        $('.imgShow').append('<img src="' + $items[$itemId].main_photo + '" alt="">');
+        $('.imgShow').append('<img src="' + $items[$itemId].img_folder + $items[$itemId].main_photo + '" alt="" class="actImg">');
         $('.infoBox').append('<div class="decribtionBox"></div>');
         var $str = $items[$itemId].describtion.replace(/\n/g, '<br>');
         $('.decribtionBox').append('<p>' + $str + '</p>');
@@ -36,6 +36,30 @@ var $items;
         $('#btnBuy').append('<p>В корзину</p>');
         $('.btnBox').append('<div id="btnReturn" class="btnItem"></div>');
         $('#btnReturn').append('<p>Вернуться к покупкам</p>');
+        var $Str = 'directory=' + $items[$itemId].img_folder;
+        $.ajax({
+        type: 'POST',
+        url: 'read_files.php',
+        dataType: 'json',
+        data: $Str,
+        response: 'text',
+        errrep: true,
+        error: function (num) {
+          console.log(num);
+        },
+        success: function (data){
+          $('.images').append('<img src="' + $items[$itemId].img_folder + $items[$itemId].main_photo + '" alt="" id="' + $items[$itemId].img_folder + $items[$itemId].main_photo + '" class="imgMin">');
+          for (var i = 0; i < data.length; i++) {
+            if ($items[$itemId].main_photo != data[i]){
+                $('.images').append('<img src="' + $items[$itemId].img_folder + data[i] + '" alt="" id="' + $items[$itemId].img_folder + data[i] + '" class="imgMin">');
+            }
+          }
+          $('.imgMin').on('click', function () {
+            $('.actImg').remove();
+            $('.imgShow').append('<img src="' + this.id + '" alt="" class="actImg">');
+          });
+        }
+      });
         $('.btnItem').on('click', function () {
           if (this.id == 'btnBuy') {
             console.log('положить в корзину');
@@ -44,7 +68,6 @@ var $items;
             $('.itemShow').remove();
           }
         });
-        console.log($itemId);
       });
   }
   });

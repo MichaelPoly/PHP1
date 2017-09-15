@@ -170,6 +170,9 @@ body {
           @include justify-content(flex-start);
           @include align-items(center);
           @include block(20%, 100%, 1px, solid, green, 0);
+          img {
+            max-width: 98%;
+          }
         }
         .imgShow {
           display: -ms-flexbox;
