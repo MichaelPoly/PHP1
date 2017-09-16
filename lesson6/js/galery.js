@@ -24,8 +24,8 @@ $(document).ready(function () {
     console.log('Ok');
       $('.center').append('<div class="addForm"></div>');
       $('.addForm').append('<h2>Выберите фото для загрузки</h2>');
-      $('.addForm').append('<form class="addImgForm" action="add_img.php" method="post"></form>');
-      $('.addImgForm').append('<input type="file" name="addFile" value="">');
+      $('.addForm').append('<form class="addImgForm" enctype="multipart/form-data" action="add_img.php" method="post"></form>');
+      $('.addImgForm').append('<input type="file" name="picture">');
       $('.addImgForm').append('<input type="submit" name="" value="Загрузить">');
 
 
