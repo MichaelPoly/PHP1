@@ -16,12 +16,14 @@ $(document).ready(function () {
       for (var i = 0; i < data.length; i++) {
            $('.images1').append('<img src="img/galery/' + data[i] + '" alt="" id="' + data[i] + '" class="imgGalMin">');
       }
+      $('.imgGalMin').on('click', function () {
+        console.log('Ok');
+      });
     }
     });
   }
   refreshGalery();
   $('.addImage').on('click', function () {
-    console.log('Ok');
       $('.center').append('<div class="addForm"></div>');
       $('.addForm').append('<h2>Выберите фото для загрузки</h2>');
       $('.addForm').append('<form class="addImgForm" enctype="multipart/form-data" action="add_img.php" method="post"></form>');
