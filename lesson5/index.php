@@ -49,6 +49,7 @@ add_item($link, "TN008", "Товар8", "7", "1290");
 add_item($link, "TN009", "Товар9", "9", "1990");
 add_item($link, "TN009", "Товар10", "9", "590");
 
+
 $clients_show = show_table($link, "clients");
 foreach ($clients_show as $key => $value) {
   foreach ($value as $key => $value) {

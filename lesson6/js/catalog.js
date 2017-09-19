@@ -1,5 +1,6 @@
 $(document).ready(function () {
 var $items;
+var $user;
   $.ajax({
   type: 'POST',
   url: 'catalog.php',
@@ -71,5 +72,43 @@ var $items;
       });
   }
   });
+  $('.regBtn').on('click', function () {
+    console.log('Ok');
+    if (this.id == 'enter') {
+  $('.itemsBlock').append('<div class="authorisation"></div>');
+  $('.regBtn').hide();
+  $('.authorisation').append('<div class="login"></div>');
+  $('.login').append('<label>Логин<input type="text" name="login" required autofocus class="loginIn" id="login"></label>');
+  $('.login').append('<label>Пароль<input type="password" name="password" required class="loginIn" id="pwd"></label>');
+  $('.login').append('<input type="submit" class="btn">');
+  $('.btn').on('click', function () {
+    var $log = document.querySelector('#login').value;
+    var $pwd = document.querySelector('#pwd').value;
+    var $logStr = 'login=' + $log + '&' + 'password=' + $pwd;
+    $.ajax({
+      type: 'POST',
+      url: 'login.php',
+      dataType: 'json',
+      data: $logStr,
+      response: 'text',
+      errrep: true,
+      error: function (num) {
+        console.log(num);
+      },
+      success: function (data) {
+          $('.authorisation').remove();
+          $user = data;
+          if ($user) {
+            console.log(data);
+            $('.registry').append('<p> Здравствуйте ' + data.first_name + '</p>');
+            } else {
+            $('.regBtn').show();
+            $('.registry').append('<p class="errInfo">Вы ввели неправильный логин или пароль</p>');
+          }
 
+      }
+     });
+    });
+    }
+  });
 });

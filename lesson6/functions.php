@@ -1,4 +1,18 @@
 <?php
+function createDb($dbName){
+  define('MYSQL_SERVER', 'localhost');
+  define('MYSQL_USER', 'root');
+  define('MYSQL_PASSWORD', '');
+  $link = mysqli_connect(MYSQL_SERVER, MYSQL_USER, MYSQL_PASSWORD)
+          or die("Error: ".mysqli_error($link));
+          if (!mysqli_set_charset($link, "utf8")){
+            printf("Error: ".mysqli_error($link));
+          }
+  $query = "CREATE DATABASE $dbName CHARACTER SET utf8 COLLATE utf8_general_ci";
+  $result = mysqli_query($link, $query);
+  if ($result) echo "База данных создана";
+  mysqli_close($link);
+}
 function db_connect($dbName)
 {
   define('MYSQL_SERVER', 'localhost');
@@ -25,4 +39,45 @@ function get_table($link, $table)
     $table_items[] = $row;
   }
   return $table_items;
+}
+function tableCreate($link, $tableName)
+{
+  $query = "CREATE TABLE $tableName";
+  $result = mysqli_query($link, $query);
+  if ($result) echo "Таблица успешно создана";
+  echo "<br>";
+}
+function add_item($link, $articul, $item_name, $quantity_stock, $price, $main_photo, $describtion, $img_folder)
+{
+  $item = "INSERT INTO item(articul, item_name, quantity_stock, price, main_photo, describtion, img_folder) VALUES('%s', '%s', '%d', '%d', '%s', '%s', '%s')";
+  $query = sprintf($item, mysqli_real_escape_string($link, $articul), mysqli_real_escape_string($link, $item_name),
+  mysqli_real_escape_string($link, $quantity_stock), mysqli_real_escape_string($link, $price),
+  mysqli_real_escape_string($link, $main_photo), mysqli_real_escape_string($link, $describtion), mysqli_real_escape_string($link, $img_folder));
+  $result = mysqli_query($link, $query);
+  if (!$result) die(mysqli_error($link));
+  return true;
+}
+function add_client($link, $first_name, $second_name, $last_name, $birth_date, $email, $login, $password)
+{
+    $client = "INSERT INTO clients(first_name, second_name, last_name, birth_date, email, login, password) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
+    $query = sprintf($client, mysqli_real_escape_string($link, $first_name), mysqli_real_escape_string($link, $second_name), mysqli_real_escape_string($link, $last_name),
+    mysqli_real_escape_string($link, $birth_date), mysqli_real_escape_string($link, $email), mysqli_real_escape_string($link, $login), mysqli_real_escape_string($link, $password));
+    $result = mysqli_query($link, $query);
+    if (!$result) die(mysqli_error($link));
+    return true;
+}
+function login($link, $login, $password){
+  $login = trim($login);
+  $password = trim($password);
+  if ($login == '' || $password == ''){
+    return false;
+  } else {
+    $query = sprintf("SELECT * FROM clients WHERE login='%s'", $login);
+    $result = mysqli_query($link, $query);
+    if (!$result) die(mysqli_error($link));
+    $user = mysqli_fetch_assoc($result);
+    if ($user['login'] == $login && $user['password'] == $password) {
+      return $user;
+    } else return false;
+  }
 }
