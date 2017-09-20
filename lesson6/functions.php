@@ -57,11 +57,11 @@ function add_item($link, $articul, $item_name, $quantity_stock, $price, $main_ph
   if (!$result) die(mysqli_error($link));
   return true;
 }
-function add_client($link, $first_name, $second_name, $last_name, $birth_date, $email, $login, $password)
+function add_client($link, $first_name, $second_name, $last_name, $phone, $email, $login, $password)
 {
-    $client = "INSERT INTO clients(first_name, second_name, last_name, birth_date, email, login, password) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
+    $client = "INSERT INTO clients(first_name, second_name, last_name, phone, email, login, password) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
     $query = sprintf($client, mysqli_real_escape_string($link, $first_name), mysqli_real_escape_string($link, $second_name), mysqli_real_escape_string($link, $last_name),
-    mysqli_real_escape_string($link, $birth_date), mysqli_real_escape_string($link, $email), mysqli_real_escape_string($link, $login), mysqli_real_escape_string($link, $password));
+    mysqli_real_escape_string($link, $phone), mysqli_real_escape_string($link, $email), mysqli_real_escape_string($link, $login), mysqli_real_escape_string($link, $password));
     $result = mysqli_query($link, $query);
     if (!$result) die(mysqli_error($link));
     return true;
@@ -80,4 +80,21 @@ function login($link, $login, $password){
       return $user;
     } else return false;
   }
+}
+function registration($link, $name, $second_name, $last_name, $e_mail, $phone, $login, $password)
+{
+  if ($second_name == '') $second_name = NULL;
+  if ($last_name == '') $last_name = NULL;
+  if ($phone == '') $phone = NULL;
+  $q = "INSERT INTO clients(first_name, second_name, last_name, email, phone, login, password) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
+  $query = sprintf($q, mysqli_real_escape_string($link, $name), mysqli_real_escape_string($link, $second_name),
+  mysqli_real_escape_string($link, $last_name), mysqli_real_escape_string($link, $e_mail), mysqli_real_escape_string($link, $phone),
+  mysqli_real_escape_string($link, $login), mysqli_real_escape_string($link, $password));
+  $result = mysqli_query($link, $query);
+  if (!$result) die(mysqli_error($link));
+  $query1 = sprintf("SELECT * FROM clients WHERE login='%s'", $login);
+  $result1 = mysqli_query($link, $query1);
+  if (!$result1) die(mysqli_error($link));
+  $user3 = mysqli_fetch_assoc($result1);
+  return $user3;
 }

@@ -8,22 +8,22 @@ $tableName = "clients(id INT NOT NULL AUTO_INCREMENT,
               first_name VARCHAR(30) NOT NULL,
               second_name VARCHAR(30) NOT NULL,
               last_name VARCHAR(30) NOT NULL,
-              birth_date DATE NULL,
+              phone VARCHAR(30) NOT NULL,
               email VARCHAR(30) NOT NULL,
               login VARCHAR(30) NOT NULL,
               password VARCHAR(30) NOT NULL,
               PRIMARY KEY (`id`))";
 tableCreate($link, $tableName);
-add_client($link, "Иван", "Иванович", "Иванов", "1985-05-12", "ivan@mail.ru", "ivan@mail.ru", "123qwer");
-add_client($link, "Светлана", "Петровна", "Захарова", "1995-07-01", "sveta95@rambler.ru", "Sveta95", "Qwerty123");
-add_client($link, "Петр", "Степанович", "Васильев", "1979-08-11", "vasilevp@rambler.ru", "vasilevp@rambler.ru", "VasPetr.1108");
-add_client($link, "Ирина", "Васильевна", "Петрова", "1999-06-21", "ira_petrova99@yandex.ru", "ira_petrova99@yandex.ru", "Ira99");
-add_client($link, "Лариса", "Сергеевна", "Савелова", "1997-06-15", "savelova_lar@gmail.com", "savelova_lar@gmail.com", "jfid18mn");
-add_client($link, "Сергей", "Александрович", "Наумов", "1993-10-15", "naum_s_a@gmail.com", "naum_s_a@gmail.com", "naumov!s!a");
-add_client($link, "Сергей", "Андреевич", "Александров", "", "aleksandrov_s@mail.ru", "aleksandrov_s@mail.ru", "porsh911");
-add_client($link, "Анатолий", "Андреевич", "Степанов", "", "stepanov77@mail.ru", "Stepan77", "mosk77Anatolij");
-add_client($link, "Анна", "Сергеевна", "Сташкова", "2001-02-03", "stashkovaas@yandex.ru", "stashkovaas@yandex.ru", "2001Saratov");
-add_client($link, "Галина", "Олеговна", "Камаева", "1998-11-12", "gala_kamaj@yandex.ru", "GalinaKamaeva", "KamaevaG1112");
+add_client($link, "Иван", "Иванович", "Иванов", "+7 903-300-05-07", "ivan@mail.ru", "ivan@mail.ru", "123qwer");
+add_client($link, "Светлана", "Петровна", "Захарова", "+7 917-300-05-07", "sveta95@rambler.ru", "Sveta95", "Qwerty123");
+add_client($link, "Петр", "Степанович", "Васильев", "+7 963-300-05-07", "vasilevp@rambler.ru", "vasilevp@rambler.ru", "VasPetr.1108");
+add_client($link, "Ирина", "Васильевна", "Петрова", "+79273000507", "ira_petrova99@yandex.ru", "ira_petrova99@yandex.ru", "Ira99");
+add_client($link, "Лариса", "Сергеевна", "Савелова", "+79063000515", "savelova_lar@gmail.com", "savelova_lar@gmail.com", "jfid18mn");
+add_client($link, "Сергей", "Александрович", "Наумов", "+7 952-500-23-09", "naum_s_a@gmail.com", "naum_s_a@gmail.com", "naumov!s!a");
+add_client($link, "Сергей", "Андреевич", "Александров", "89063004515", "aleksandrov_s@mail.ru", "aleksandrov_s@mail.ru", "porsh911");
+add_client($link, "Анатолий", "Андреевич", "Степанов", "89063004518", "stepanov77@mail.ru", "Stepan77", "mosk77Anatolij");
+add_client($link, "Анна", "Сергеевна", "Сташкова", "89063004520", "stashkovaas@yandex.ru", "stashkovaas@yandex.ru", "2001Saratov");
+add_client($link, "Галина", "Олеговна", "Камаева", "89173004554", "gala_kamaj@yandex.ru", "GalinaKamaeva", "KamaevaG1112");
 
 $tableName1 = "item(id INT NOT NULL AUTO_INCREMENT,
               articul VARCHAR(30) NOT NULL,

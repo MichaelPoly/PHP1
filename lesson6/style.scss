@@ -484,3 +484,107 @@ body {
     margin-top: 4%;
   }
 }
+.registration {
+  position: absolute;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(center);
+  @include block(40vw, 40vh, 0px, solid, green, 10px);
+  background-color: lightgreen;
+  box-shadow: 1px 1px 3px green;
+  transform: translateY(10vh);
+  .formTitle {
+    font-size: 1.5em;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+  }
+  .names {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(center);
+    @include block(95%, 20%, 0px, solid, green, 0);
+    .namesN {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(column);
+      @include align-items(flex-start);
+      @include justify-content(center);
+      @include block(32%, 90%, 0px, solid, green, 0);
+      label {
+        margin-left: 5%;
+        color: blue;
+        font-weight: bold;
+      }
+      .loginIn {
+        width: 90%;
+        height: 15%;
+        border-radius: 5px;
+        margin-top: 2%;
+      }
+    }
+  }
+  .loginBox {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(space-around);
+  @include block(95%, 30%, 0px, solid, green, 0);
+  label {
+    margin-left: 5%;
+    color: blue;
+    font-weight: bold;
+  }
+  .loginIn {
+    width: 95%;
+    height: 15%;
+    border-radius: 5px;
+    margin-top: 2%;
+  }
+  .pwdBox {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(column);
+    @include align-items(flex-start);
+    @include justify-content(center);
+    @include block(50%, 98%, 0px, solid, green, 0);
+    label {
+      margin-left: 5%;
+      color: blue;
+      font-weight: bold;
+    }
+    .loginIn {
+      width: 95%;
+      height: 15%;
+      border-radius: 5px;
+      margin-top: 2%;
+    }
+  }
+}
+.btn {
+  width: 40%;
+  height: 10%;
+  background-color: green;
+  color: lightgreen;
+  border: none;
+  border-radius: 10px;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  box-shadow: 1px 1px 4px black;
+}
+.btn:hover {
+  background-color: lighten(green, 10);
+  box-shadow: 1px 1px 2px black;
+  color: darken(lightgreen, 10);
+}
+}
