@@ -448,6 +448,14 @@ body {
     @include align-items(center);
     @include block(90%, 15vh, 1px, solid, green, 10px);
     margin-top: 5%;
+    img {
+      max-height: 50%;
+    }
+    p {
+      color: green;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
   }
 }
 .authorisation {

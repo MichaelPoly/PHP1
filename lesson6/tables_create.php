@@ -35,25 +35,27 @@ $tableName1 = "item(id INT NOT NULL AUTO_INCREMENT,
               img_folder varchar(225),
               PRIMARY KEY (`id`))";
 tableCreate($link, $tableName1);
-add_item($link, "TN001", "Товар1", "50", "2990", "elefant1.png", "Описание товара номер характеристики товара номер", "img/TN001/");
-add_item($link, "TN002", "Товар2", "35", "3990", "elefant1.png", "Описание товара номер 2 характеристики товара номер 2", "img/TN002/");
-add_item($link, "TN003", "Товар3", "20", "3190", "elefant1.png", "Описание товара номер 3 характеристики товара номер 3", "img/TN003/");
-add_item($link, "TN004", "Товар4", "60", "4090", "elefant1.png", "Описание товара номер 4 характеристики товара номер 4", "img/TN004/");
-add_item($link, "TN005", "Товар5", "90", "3490", "elefant1.png", "Описание товара номер 5 характеристики товара номер 5", "img/TN005/");
-add_item($link, "TN006", "Товар6", "2", "5690", "elefant1.png", "Описание товара номер 6 характеристики товара номер 6", "img/TN006/");
-add_item($link, "TN007", "Товар7", "4", "990", "elefant1.png", "Описание товара номер 7 характеристики товара номер 7", "img/TN007/");
-add_item($link, "TN008", "Товар8", "7", "1290", "elefant1.png", "Описание товара номер 8 характеристики товара номер 8", "img/TN008/");
-add_item($link, "TN009", "Товар9", "9", "1990", "elefant1.png", "Описание товара номер 9 характеристики товара номер 9", "img/TN009/");
-add_item($link, "TN010", "Товар10", "15", "5990", "elefant1.png", "Описание товара номер 10 характеристики товара номер 10", "img/TN010/");
+add_item($link, "TN001", "Товар1", "50", "2990", "elefant1.png", "Описание товара номер 1\nхарактеристики товара номер 1", "img/TN001/");
+add_item($link, "TN002", "Товар2", "35", "3990", "elefant1.png", "Описание товара номер 2\nхарактеристики товара номер 2", "img/TN002/");
+add_item($link, "TN003", "Товар3", "20", "3190", "elefant1.png", "Описание товара номер 3\nхарактеристики товара номер 3", "img/TN003/");
+add_item($link, "TN004", "Товар4", "60", "4090", "elefant1.png", "Описание товара номер 4\nхарактеристики товара номер 4", "img/TN004/");
+add_item($link, "TN005", "Товар5", "90", "3490", "elefant1.png", "Описание товара номер 5\nхарактеристики товара номер 5", "img/TN005/");
+add_item($link, "TN006", "Товар6", "2", "5690", "elefant1.png", "Описание товара номер 6\nхарактеристики товара номер 6", "img/TN006/");
+add_item($link, "TN007", "Товар7", "4", "990", "elefant1.png", "Описание товара номер 7\nхарактеристики товара номер 7", "img/TN007/");
+add_item($link, "TN008", "Товар8", "7", "1290", "elefant1.png", "Описание товара номер 8\nхарактеристики товара номер 8", "img/TN008/");
+add_item($link, "TN009", "Товар9", "9", "1990", "elefant1.png", "Описание товара номер 9\n характеристики товара номер 9", "img/TN009/");
+add_item($link, "TN010", "Товар10", "15", "5990", "elefant1.png", "Описание товара номер 10\nхарактеристики товара номер 10", "img/TN010/");
 
 $tableName2 = "orders(id INT NOT NULL AUTO_INCREMENT,
+               order_num VARCHAR(30) NULL,
                clientid INT NOT NULL,
                itemid INT NOT NULL,
                quantity INT NOT NULL,
                confirmed BOOLEAN NOT NULL,
                payed BOOLEAN NOT NULL,
                order_state VARCHAR(30) NOT NULL,
-               PRIMARY KEY (`id`, `itemid`))";
+               date DATE NOT NULL,
+               PRIMARY KEY (`id`))";
  tableCreate($link, $tableName2);
 
  $query = "ALTER TABLE orders ADD FOREIGN KEY(`clientid`) REFERENCES clients(id)";

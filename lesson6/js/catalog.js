@@ -1,6 +1,15 @@
 $(document).ready(function () {
 var $items;
 var $user;
+function refreshBusket() {
+  if (!$user) {
+    $('.basket').append('<p>Товаров: 0</p>');
+    $('.basket').append('<p>Цена: 0 р</p>');
+  } else {
+
+  }
+}
+refreshBusket();
   $.ajax({
   type: 'POST',
   url: 'catalog.php',
@@ -32,6 +41,7 @@ var $user;
         var $str = $items[$itemId].describtion.replace(/\n/g, '<br>');
         $('.decribtionBox').append('<p>' + $str + '</p>');
         $('.itemShow').append('<h2>Цена: ' + $items[$itemId].price + ' руб.</h2>');
+        $('.itemShow').append('<label>Количество<input type="number" min="0" max="' + $items[$itemId].quantity_stock + '" step="1" name="quantity" class="quantity" id="quantity"></label>');
         $('.itemShow').append('<div class="btnBox"></div>');
         $('.btnBox').append('<div id="btnBuy" class="btnItem"></div>');
         $('#btnBuy').append('<p>В корзину</p>');
@@ -64,6 +74,23 @@ var $user;
         $('.btnItem').on('click', function () {
           if (this.id == 'btnBuy') {
             console.log('положить в корзину');
+            var $quntity = document.querySelector('#quantity').value;
+            var $str = 'itemid=' + $items[$itemId].id + '&quantity=' + $quntity + '&price=' +
+            $items[$itemId].price + '&userid=' + $user.id;
+            $.ajax({
+              type: 'POST',
+              url: 'add_to_basket.php',
+              dataType: 'json',
+              data: $str,
+              response: 'text',
+              errrep: true,
+              error: function (num) {
+                console.log(num);
+              },
+              success: function (data){
+
+              }
+            });
             $('.itemShow').remove();
           } else {
             $('.itemShow').remove();
@@ -73,7 +100,6 @@ var $user;
   }
   });
   $('.regBtn').on('click', function () {
-    console.log('Ok');
     if (this.id == 'enter') {
       $('.itemsBlock').append('<div class="authorisation"></div>');
       $('.regBtn').hide();
@@ -99,7 +125,6 @@ var $user;
               $('.authorisation').remove();
               $user = data;
               if ($user) {
-                console.log(data);
                 $('.registry').append('<p> Здравствуйте ' + data.first_name + '</p>');
                 } else {
                 $('.regBtn').show();
