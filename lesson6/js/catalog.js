@@ -24,7 +24,7 @@ function refreshBusket() {
       var $sumPrice = 0;
       for (var i = 0; i < data.length; i++) {
         $sumQuantity = parseInt($sumQuantity) + parseInt(data[i].quantity);
-        $sumPrice = parseInt($sumPrice) + parseInt(data[i].price);
+        $sumPrice = parseInt($sumPrice) + (parseInt(data[i].price) * parseInt(data[i].quantity));
       }
       $('.basketMin').remove();
       $('.basket').append('<p class="basketMin">Товаров: ' + $sumQuantity + '</p>');
@@ -270,6 +270,19 @@ refreshBusket();
           } else return false;
   });
   $('.basket').on('click', function () {
-    console.log('Ok');
+    console.log($basket);
+    $('.itemsBlock').append('<div class="basketWindow"></div>');
+    $('.basketWindow').append('<h2> Ваша корзина ' + $user.first_name + ' ' + $user.last_name + '</h2>');
+    if ($basket.length == 0) {
+      $('.basketWindow').append('<h2> Ваша корзина пуста</h2>');
+    } else {
+      for (var i = 0; i < $basket.length; i++) {
+        $('.basketWindow').append('<div class="basketItem" id="itemNum' + i + '"></div>');
+        $('#itemNum' + i).append('<p>' + (i + 1) + '</p>');
+        $('#itemNum' + i).append('<p>' + $basket[i].itemid + '</p>');
+
+      }
+    }
+
   });
 });

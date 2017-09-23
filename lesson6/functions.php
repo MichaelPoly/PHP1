@@ -114,7 +114,7 @@ function add_to_basket($link, $item, $quantity, $price, $userid)
 }
 function show_basket($link, $userid)
 {
-  $query = sprintf("SELECT * FROM orders WHERE clientid='%d' AND order_state='%s'", $userid, 'new');
+  $query = sprintf("SELECT item_name FROM item INNER JOIN orders ON item.id = orders.itemid WHERE orders.clientid = '%s' AND orders.order_state = '%d'", $userid, 'new');
   $result = mysqli_query($link, $query);
   if (!$result) die(mysqli_error($link));
   $basket_items = array();
