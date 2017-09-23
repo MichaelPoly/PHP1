@@ -1,12 +1,36 @@
 $(document).ready(function () {
 var $items;
 var $user;
+var $basket;
 function refreshBusket() {
   if (!$user) {
-    $('.basket').append('<p>Товаров: 0</p>');
-    $('.basket').append('<p>Цена: 0 р</p>');
+    $('.basket').append('<p class="basketMin">Товаров: 0</p>');
+    $('.basket').append('<p class="basketMin">Цена: 0 р</p>');
   } else {
-
+  $.ajax({
+    type: 'POST',
+    url: 'basket.php',
+    dataType: 'json',
+    data: 'userid=' + $user.id,
+    response: 'text',
+    errrep: true,
+    error: function (num) {
+      console.log(num);
+    },
+    success: function (data) {
+      console.log(data);
+      $basket = data;
+      var $sumQuantity = 0;
+      var $sumPrice = 0;
+      for (var i = 0; i < data.length; i++) {
+        $sumQuantity = parseInt($sumQuantity) + parseInt(data[i].quantity);
+        $sumPrice = parseInt($sumPrice) + parseInt(data[i].price);
+      }
+      $('.basketMin').remove();
+      $('.basket').append('<p class="basketMin">Товаров: ' + $sumQuantity + '</p>');
+      $('.basket').append('<p class="basketMin">Цена: ' + $sumPrice + ' р</p>');
+    }
+  });
   }
 }
 refreshBusket();
@@ -82,13 +106,12 @@ refreshBusket();
               url: 'add_to_basket.php',
               dataType: 'json',
               data: $str,
-              response: 'text',
               errrep: true,
               error: function (num) {
                 console.log(num);
               },
               success: function (data){
-
+                refreshBusket();
               }
             });
             $('.itemShow').remove();
@@ -130,7 +153,7 @@ refreshBusket();
                 $('.regBtn').show();
                 $('.registry').append('<p class="errInfo">Вы ввели неправильный логин или пароль</p>');
               }
-
+              refreshBusket();
           }
          });
         });
@@ -245,6 +268,8 @@ refreshBusket();
               }
             });
           } else return false;
-    // });
+  });
+  $('.basket').on('click', function () {
+    console.log('Ok');
   });
 });

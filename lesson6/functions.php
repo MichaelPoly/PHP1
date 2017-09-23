@@ -98,3 +98,30 @@ function registration($link, $name, $second_name, $last_name, $e_mail, $phone, $
   $user3 = mysqli_fetch_assoc($result1);
   return $user3;
 }
+function add_to_basket($link, $item, $quantity, $price, $userid)
+{
+  date_default_timezone_set('Europe/Moscow');
+  $dateNow = date('Y-m-d');
+  $userid = (int)$userid;
+  $q = "INSERT INTO orders(itemid, clientid, quantity, price, confirmed, payed, order_state, `date`)
+  VALUES('%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s')";
+  $query = sprintf($q, mysqli_real_escape_string($link, $item), mysqli_real_escape_string($link, $userid),
+  mysqli_real_escape_string($link, $quantity), mysqli_real_escape_string($link, $price),
+  mysqli_real_escape_string($link, false), mysqli_real_escape_string($link, false),
+  mysqli_real_escape_string($link, 'new'), mysqli_real_escape_string($link, $dateNow));
+  $result = mysqli_query($link, $query);
+  if (!$result) die(mysqli_error($link));
+}
+function show_basket($link, $userid)
+{
+  $query = sprintf("SELECT * FROM orders WHERE clientid='%d' AND order_state='%s'", $userid, 'new');
+  $result = mysqli_query($link, $query);
+  if (!$result) die(mysqli_error($link));
+  $basket_items = array();
+  $n = mysqli_num_rows($result);
+  for ($i=0; $i < $n; $i++) {
+    $row = mysqli_fetch_assoc($result);
+    $basket_items[] = $row;
+  }
+  return $basket_items;
+}

@@ -51,6 +51,7 @@ $tableName2 = "orders(id INT NOT NULL AUTO_INCREMENT,
                clientid INT NOT NULL,
                itemid INT NOT NULL,
                quantity INT NOT NULL,
+               price INT NOT NULL,
                confirmed BOOLEAN NOT NULL,
                payed BOOLEAN NOT NULL,
                order_state VARCHAR(30) NOT NULL,
@@ -58,7 +59,7 @@ $tableName2 = "orders(id INT NOT NULL AUTO_INCREMENT,
                PRIMARY KEY (`id`))";
  tableCreate($link, $tableName2);
 
- $query = "ALTER TABLE orders ADD FOREIGN KEY(`clientid`) REFERENCES clients(id)";
+ $query = "ALTER TABLE orders ADD FOREIGN KEY(`clientid`) REFERENCES clients(`id`) ON UPDATE CASCADE ON DELETE CASCADE";
  mysqli_query($link, $query);
- $query1 = "ALTER TABLE orders ADD FOREIGN KEY(`itemid`) REFERENCES item(id)";
+ $query1 = "ALTER TABLE orders ADD FOREIGN KEY(`itemid`) REFERENCES item(`id`) ON UPDATE CASCADE ON DELETE CASCADE";
  mysqli_query($link, $query1);
