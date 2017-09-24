@@ -597,8 +597,8 @@ body {
   @include flex-direction(column);
   @include align-items(center);
   @include justify-content(flex-start);
-  @include block(60vw, 60vh, 0px, solid, green, 10px);
-  background-color: lightgreen;
+  @include block(60vw, 60vh, 1px, solid, green, 10px);
+  background-color: white;
   box-shadow: 1px 1px 3px green;
   transform: translateY(1vh);
   h2 {
@@ -614,10 +614,35 @@ body {
     @include flex-direction(row);
     @include align-items(center);
     @include justify-content(space-between);
-    @include block(80%, 5%, 1px, solid, green, 0);
+    @include block(90%, 5%, 0px, solid, green, 0);
     margin-top: 1%;
-    p {
-      margin-left: 1%;
+    .iNum {
+      width: 3%;
+      color: green;
+      font-weight: bold;
+    }
+    .iName {
+      width: 50%;
+      color: green;
+      font-weight: bold;
+    }
+    .iQuan {
+      width: 10%;
+      color: green;
+      font-weight: bold;
+    }
+    .iPrice {
+      width: 20%;
+      color: green;
+      font-weight: bold;
+    }
+    .iDel {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include align-items(center);
+      @include justify-content(center);
+      @include block(3%, 95%, 0px, solid, green, 5px);
     }
   }
 }

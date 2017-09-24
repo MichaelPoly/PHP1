@@ -114,7 +114,7 @@ function add_to_basket($link, $item, $quantity, $price, $userid)
 }
 function show_basket($link, $userid)
 {
-  $query = sprintf("SELECT item_name FROM item INNER JOIN orders ON item.id = orders.itemid WHERE orders.clientid = '%s' AND orders.order_state = '%d'", $userid, 'new');
+  $query = sprintf("SELECT * FROM orders INNER JOIN item ON orders.itemid=item.item_id WHERE clientid='%d' AND order_state='%s'", $userid, 'new');
   $result = mysqli_query($link, $query);
   if (!$result) die(mysqli_error($link));
   $basket_items = array();
@@ -125,3 +125,11 @@ function show_basket($link, $userid)
   }
   return $basket_items;
 }
+  function del_from_basket($link, $id)
+  {
+    $id = (int)$id;
+    $query = sprintf("DELETE FROM orders WHERE id=%d", $id);
+    $result = mysqli_query($link, $query);
+    if (!$result) die(mysqli_error($link));
+    return mysqli_affected_rows($link);
+  }

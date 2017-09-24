@@ -65,7 +65,7 @@ refreshBusket();
         var $str = $items[$itemId].describtion.replace(/\n/g, '<br>');
         $('.decribtionBox').append('<p>' + $str + '</p>');
         $('.itemShow').append('<h2>Цена: ' + $items[$itemId].price + ' руб.</h2>');
-        $('.itemShow').append('<label>Количество<input type="number" min="0" max="' + $items[$itemId].quantity_stock + '" step="1" name="quantity" class="quantity" id="quantity"></label>');
+        $('.itemShow').append('<label>Количество<input type="number" min="0" max="' + $items[$itemId].quantity_stock + '" step="1" name="quantity" class="quantity" id="quantity" value="1"></label>');
         $('.itemShow').append('<div class="btnBox"></div>');
         $('.btnBox').append('<div id="btnBuy" class="btnItem"></div>');
         $('#btnBuy').append('<p>В корзину</p>');
@@ -99,7 +99,7 @@ refreshBusket();
           if (this.id == 'btnBuy') {
             console.log('положить в корзину');
             var $quntity = document.querySelector('#quantity').value;
-            var $str = 'itemid=' + $items[$itemId].id + '&quantity=' + $quntity + '&price=' +
+            var $str = 'itemid=' + $items[$itemId].item_id + '&quantity=' + $quntity + '&price=' +
             $items[$itemId].price + '&userid=' + $user.id;
             $.ajax({
               type: 'POST',
@@ -148,9 +148,12 @@ refreshBusket();
               $('.authorisation').remove();
               $user = data;
               if ($user) {
+                $('.errInfo').remove();
                 $('.registry').append('<p> Здравствуйте ' + data.first_name + '</p>');
                 } else {
                 $('.regBtn').show();
+                $('.basketMin').remove();
+                $('.errInfo').remove();
                 $('.registry').append('<p class="errInfo">Вы ввели неправильный логин или пароль</p>');
               }
               refreshBusket();
@@ -276,12 +279,40 @@ refreshBusket();
     if ($basket.length == 0) {
       $('.basketWindow').append('<h2> Ваша корзина пуста</h2>');
     } else {
+      $('.basketWindow').append('<div class="basketItem" id="itemNum"></div>');
+      $('#itemNum').append('<p class="iNum">n/n</p>');
+      $('#itemNum').append('<p class="iName">Наименование товара</p>');
+      $('#itemNum').append('<p class="iQuan">Кол-во</p>');
+      $('#itemNum').append('<p class="iPrice">Сумма</p>');
+      $('#itemNum').append('<p class="iDel"></p>');
       for (var i = 0; i < $basket.length; i++) {
         $('.basketWindow').append('<div class="basketItem" id="itemNum' + i + '"></div>');
-        $('#itemNum' + i).append('<p>' + (i + 1) + '</p>');
-        $('#itemNum' + i).append('<p>' + $basket[i].itemid + '</p>');
-
+        $('#itemNum' + i).append('<p class="iNum">' + (i + 1) + '</p>');
+        $('#itemNum' + i).append('<p class="iName">' + $basket[i].item_name + '</p>');
+        $('#itemNum' + i).append('<p class="iQuan">' + $basket[i].quantity + '</p>');
+        $('#itemNum' + i).append('<p class="iPrice">' + ($basket[i].quantity * $basket[i].price) + ' Руб</p>');
+        $('#itemNum' + i).append('<p class="iDel" id="del' + i + '">X</p>');
       }
+      $('.iDel').on('click', function () {
+        var $orderN = this.id.slice(3);
+
+        $('#itemNum' + $orderN).remove();
+        var $delOrder = 'orderid=' + $basket[$orderN].id;
+        $.ajax({
+          type: 'POST',
+          url: 'del_from_basket.php',
+          dataType: 'json',
+          data: $delOrder,
+          response: 'text',
+          errrep: true,
+          error: function (num) {
+            console.log(num);
+          },
+          success: function (data){
+
+          }
+        });
+      });
     }
 
   });

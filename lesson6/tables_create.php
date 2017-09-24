@@ -25,7 +25,7 @@ add_client($link, "Анатолий", "Андреевич", "Степанов", 
 add_client($link, "Анна", "Сергеевна", "Сташкова", "89063004520", "stashkovaas@yandex.ru", "stashkovaas@yandex.ru", "2001Saratov");
 add_client($link, "Галина", "Олеговна", "Камаева", "89173004554", "gala_kamaj@yandex.ru", "GalinaKamaeva", "KamaevaG1112");
 
-$tableName1 = "item(id INT NOT NULL AUTO_INCREMENT,
+$tableName1 = "item(item_id INT NOT NULL AUTO_INCREMENT,
               articul VARCHAR(30) NOT NULL,
               item_name VARCHAR(30) NOT NULL,
               quantity_stock INT NOT NULL,
@@ -33,7 +33,7 @@ $tableName1 = "item(id INT NOT NULL AUTO_INCREMENT,
               main_photo VARCHAR(225) NOT NULL,
               describtion VARCHAR(1024) NOT NULL,
               img_folder varchar(225),
-              PRIMARY KEY (`id`))";
+              PRIMARY KEY (`item_id`))";
 tableCreate($link, $tableName1);
 add_item($link, "TN001", "Товар1", "50", "2990", "elefant1.png", "Описание товара номер 1\nхарактеристики товара номер 1", "img/TN001/");
 add_item($link, "TN002", "Товар2", "35", "3990", "elefant1.png", "Описание товара номер 2\nхарактеристики товара номер 2", "img/TN002/");
@@ -61,5 +61,5 @@ $tableName2 = "orders(id INT NOT NULL AUTO_INCREMENT,
 
  $query = "ALTER TABLE orders ADD FOREIGN KEY(`clientid`) REFERENCES clients(`id`) ON UPDATE CASCADE ON DELETE CASCADE";
  mysqli_query($link, $query);
- $query1 = "ALTER TABLE orders ADD FOREIGN KEY(`itemid`) REFERENCES item(`id`) ON UPDATE CASCADE ON DELETE CASCADE";
+ $query1 = "ALTER TABLE orders ADD FOREIGN KEY(`itemid`) REFERENCES item(item_id) ON UPDATE CASCADE ON DELETE CASCADE";
  mysqli_query($link, $query1);
