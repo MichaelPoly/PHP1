@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 100%;
+  font-weight: normal;
+}
+@mixin reference($decoration,$size,$weight,$color) {
+  text-decoration: $decoration;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+@mixin justify-content($pos1) {
+  -webkit-justify-content: $pos1;
+  -ms-flex-pack: $pos1;
+  justify-content: $pos1;
+}
+@mixin align-items($pos3) {
+  -webkit-align-items: $pos3;
+  -ms-flex-align: $pos3;
+  align-items: $pos3;
+}
+@mixin block($width,$height,$borderWidth,$borderStyle,$borderColor,$borderRadius) {
+  width: $width;
+  height: $height;
+  border-width: $borderWidth;
+  border-style: $borderStyle;
+  border-color: $borderColor;
+  border-radius: $borderRadius;
+}
+header {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(row);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(100%, 10vh, 0px, solid, green, 0);
+  background-color: lightgray;
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: green;
+  }
+}
+.mainWindow{
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(row);
+  @include justify-content(flex-start);
+  @include align-items(flex-start);
+  @include block(100%, auto, 0px, solid, green, 0);
+}
+.authorisation {
+  position: absolute;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(50%, 20vh, 0px, solid, green, 10px);
+  background-color: lightgray;
+  box-shadow: 2px 2px 4px black;
+  transform: translate(50%, 50%);
+  .inputs {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include justify-content(space-around);
+    @include align-items(center);
+    @include block(90%, 50%, 0px, solid, green, 0);
+  }
+  .enterBtn {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include justify-content(center);
+    @include align-items(center);
+    @include block(20%, 3vh, 0px, solid, green, 10px);
+    background-color: gray;
+    box-shadow: 2px 2px 4px black;
+    p {
+      font-weight: bold;
+      color: lightgray;
+    }
+  }
+  .enterBtn:hover {
+    background-color: white;
+    p {
+      color: gray;
+    }
+  }
+}
+.leftBar {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(20%, auto, 0px, solid, green, 0);
+  border-right: 1px solid black;
+  margin: 1%;
+  .leftBarBtn {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include justify-content(center);
+    @include align-items(center);
+    @include block(95%, 3vh, 0px, solid, green, 0);
+    background-color: gray;
+    box-shadow: 3px 3px 5px black;
+    margin-top: 2%;
+    p {
+      font-weight: bold;
+      color: lightgray;
+    }
+  }
+  .leftBarBtn:hover {
+    box-shadow: 1px 1px 2px black;
+    p {
+      color: white;
+    }
+  }
+}
+.infoBlock {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(flex-start);
+  @include align-items(center);
+  @include block(78%, 80vh, 1px, solid, green, 0);
+  margin: 1%;
+  h1 {
+    font-size: 1.5em;
+    color: grey;
+    margin: 2%;
+  }
+  h2 {
+    font-size: 1.2em;
+    color: red;
+    margin: 2%;
+  }
+  .category {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include justify-content(space-around);
+    @include align-items(center);
+    @include block(95%, 10vh, 0px, solid, grey, 0);
+    box-shadow: 1px 1px 2px black;
+    label {
+      width: 50%;
+      color: grey;
+      input {
+        width: 100%;
+        margin-top: 1%;
+      }
+    }
+  }
+}
+.enterBtn {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(20%, 3vh, 0px, solid, green, 10px);
+  background-color: gray;
+  box-shadow: 2px 2px 4px black;
+  p {
+    font-weight: bold;
+    color: lightgray;
+  }
+}
+.enterBtn:hover {
+  background-color: white;
+  p {
+    color: gray;
+  }
+}
